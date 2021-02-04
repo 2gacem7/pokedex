@@ -1,1 +1,1 @@
-# Test de git add 
+# Création d'une bibliothèque Pokemon.
