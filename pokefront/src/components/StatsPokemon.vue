@@ -104,7 +104,7 @@
 </template>
 
 <script>
-    import axios from "axios"
+    //import axios from "axios"
 
     export default {
         name: 'StatsPokemon',
@@ -122,33 +122,20 @@
                 defense: "",
                 sp_attack: "",
                 sp_defense: "",
-                speed: ""
+                speed: "",
+                getPokemonStats: this.$store.state.getPokemonStats
             }
         },
-        beforeMount() {
+        beforeMount () {
             this.getPokemonStats();
         },
-        methods: {
-            async getPokemonStats() {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer ");
-
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    redirect: 'follow'
-                };
-                await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id, requestOptions)
-                    .then(response => {
-                        this.pokeInfo = response.data.data,
-                            this.hp = this.pokeInfo.Stats[0].hp,
-                            this.attack = this.pokeInfo.Stats[0].attack,
-                            this.defense = this.pokeInfo.Stats[0].defense,
-                            this.sp_attack = this.pokeInfo.Stats[0].sp_attack,
-                            this.sp_defense = this.pokeInfo.Stats[0].sp_defense,
-                            this.speed = this.pokeInfo.Stats[0].speed
-                    })
+        watch:{
+            id(){
+                this.getPokemonStats();
             },
+        },
+        methods: {
+            
         },
     }
 </script>

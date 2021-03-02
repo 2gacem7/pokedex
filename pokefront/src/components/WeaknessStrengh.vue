@@ -161,7 +161,11 @@
         beforeMount() {
             this.getWeaknesses()
         },
-
+        watch : {
+            id() {
+                this.getWeaknesses();
+            }
+        },
         methods: {
             async getWeaknesses() {
                 var myHeaders = new Headers();

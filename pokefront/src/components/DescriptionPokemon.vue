@@ -78,27 +78,24 @@
         beforeMount() {
             this.getPokemonDescription()
         },
+        watch:{
+            id() {
+                this.getPokemonDescription();
+            }
+        },
 
         methods: {
             async getPokemonDescription() {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer ");
-
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    redirect: 'follow'
-                };
-                await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id, requestOptions)
-                    .then(response => {
-                        this.pokeInfo = response.data.data,
-                            this.description = this.pokeInfo.Description[0].description,
-                            this.type1 = this.pokeInfo.Types[0].type1,
-                            this.type2 = this.pokeInfo.Types[0].type2,
-                            this.height = this.pokeInfo.Information[0].height,
-                            this.weight = this.pokeInfo.Information[0].weight
-                    })
+              
+                const response =  await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id)
+                this.pokeInfo = response.data.data,
+                this.description = this.pokeInfo.Description[0].description,
+                this.type1 = this.pokeInfo.Types[0].type1,
+                this.type2 = this.pokeInfo.Types[0].type2,
+                this.height = this.pokeInfo.Information[0].height,
+                this.weight = this.pokeInfo.Information[0].weight
             },
+
             return_type(type1) {
                 return `/assets/types/${type1}` + `.png`
             },

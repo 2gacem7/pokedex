@@ -1,5 +1,15 @@
 <template>
     <div class="container fontPokemon" style="max-width:60rem">
+        <router-link v-bind:to="'/pokedex/' + id">
+            <a v-on:click="nextPokemon()">
+                suivant
+            </a>
+        </router-link>
+        <router-link v-bind:to="'/pokedex/' + id">
+            <a v-on:click="previousPokemon()">
+                precedent
+            </a>
+        </router-link>
         <div class="d-flex justify-content-center ">
             <div class=" mb-5">
                 <div class="card-header mb-5">
@@ -8,16 +18,16 @@
                 </div>
                 <img :src="return_Image(image)" class="rounded mx-auto d-block container-fluid" alt="no pokemon's image"
                     style="max-width: 30rem;">
-                    <div class=mt-5>
-                        <TabBar :id="id" :name="name" style="min-width:20rem; max-width:30rem" />
-                    </div>
+                <div class=mt-5>
+                    <TabBar :id="id" :name="name" style="min-width:20rem; max-width:30rem" />
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import axios from "axios"
+    //import axios from "axios"
     import TabBar from '@/components/TabBar.vue'
 
     export default {
@@ -34,32 +44,14 @@
                 type2: "",
                 image: "",
                 name: "",
+                getPokemonInformation: this.$store.state.getPokemonInformation
             }
         },
-        beforeMount() {
+        mounted () {
             this.getPokemonInformation();
         },
         methods: {
-            async getPokemonInformation() {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer ");
-
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    redirect: 'follow'
-                };
-                await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id, requestOptions)
-                    .then(response => {
-                        this.pokeInfo = response.data.data,
-                            this.description = this.pokeInfo.Description[0].description,
-                            this.type1 = this.pokeInfo.Types[0].type1,
-                            this.type2 = this.pokeInfo.Types[0].type2,
-                            this.image = this.pokeInfo.Images[0].Images,
-                            this.name = this.pokeInfo.Name[0].nom_pok
-                    })
-                    .catch((error) => console.log(error));
-            },
+           
             nextPokemon() {
                 this.id++;
                 this.getPokemonInformation();
@@ -93,5 +85,4 @@
         background: linear-gradient(214deg, rgba(255, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
         color: white;
     }
-
 </style>

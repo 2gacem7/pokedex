@@ -86,19 +86,10 @@
 
         methods: {
             async listPokemon() {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer ");
 
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    redirect: 'follow'
-                };
-                await axios.get("http://127.0.0.1:8000/api/v1/pokedex/", requestOptions)
-                    .then(response => {
-                        this.pokemons = response
-                    })
-                    .catch((error) => console.log(error));
+                const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/");
+                this.pokemons = response;
+
             },
             return_Link(pokemon) {
                 return `/assets/${pokemon.image}`
@@ -139,8 +130,8 @@
             lightBlue() {
                 return this.color_cardBody = "lightBlue"
             },
-            pokeballcolor(){
-                return this.color_cardBody ="colorpokeball"
+            pokeballcolor() {
+                return this.color_cardBody = "colorpokeball"
             }
         },
 
@@ -287,9 +278,9 @@
         background: rgb(250, 0, 0);
         background: linear-gradient(180deg, rgba(250, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 1) 100%);
         color: white;
-        border:solid;
-        border-color:black ;
-     
+        border: solid;
+        border-color: black;
+
     }
 
     .color-box {
