@@ -35,8 +35,6 @@
 
 
 <script>
-    import axios from "axios"
-
     export default {
         name: 'DescriptionPokemon',
         components: {
@@ -56,7 +54,8 @@
                 nomEvolution: "",
                 No: "",
                 evolutions: "",
-                otherEvolution: false
+                otherEvolution: false,
+                getPokemonIdEvolution: this.$store.state.getPokemonIdEvolution
             }
         },
         beforeMount() {
@@ -68,32 +67,7 @@
                 this.getPokemonIdEvolution();
             }
         },
-
         methods: {
-                        //Récupère le id de l'écolution du pokemon
-            async getPokemonIdEvolution() {
-                const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id)
-
-                this.pokeInfo = response.data.data;
-                this.ImagePokemonBase = this.pokeInfo.Images[0].Images;
-                if (this.pokeInfo.Evolutions != "") {
-                    this.evolutions = this.pokeInfo.Evolutions
-                    this.idEvolution = this.pokeInfo.Evolutions[0].id_pok_evol
-                    if (this.pokeInfo.Evolutions.length > 1) {
-                        console.log("bjr")
-                        this.otherEvolution = true
-                    }
-                } else {
-                    this.idEvolution = null
-                }
-                if (this.idEvolution != null) {
-                    const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.idEvolution);
-                    this.infoEvolution = response.data.data,
-                    this.nomEvolution = this.infoEvolution.Name[0].nom_pok,
-                    this.ImageEvolution = this.infoEvolution.Images[0].Images
-                }
-            },
-
             return_ImagePokeBase(ImagePokemonBase) {
                 return `/assets/${ImagePokemonBase}`
             },

@@ -50,15 +50,18 @@
         mounted () {
             this.getPokemonInformation();
         },
+        watch:{
+            id() {
+                this.getPokemonInformation();
+            }
+        },
         methods: {
            
             nextPokemon() {
                 this.id++;
-                this.getPokemonInformation();
             },
             previousPokemon() {
                 this.id--;
-                this.getPokemonInformation();
             },
             return_Image(image) {
                 return `/assets/${image}`

@@ -54,8 +54,6 @@
 
 
 <script>
-    import axios from "axios"
-
     export default {
         name: 'DescriptionPokemon',
         components: {
@@ -63,7 +61,7 @@
         },
         props: {
             id: Number,
-            name:String,
+            name: String,
         },
         data() {
             return {
@@ -73,29 +71,19 @@
                 type2: "",
                 height: "",
                 weight: "",
+                getPokemonDescription: this.$store.state.getPokemonDescription,
             }
         },
         beforeMount() {
             this.getPokemonDescription()
         },
-        watch:{
+        watch: {
             id() {
                 this.getPokemonDescription();
             }
         },
 
         methods: {
-            async getPokemonDescription() {
-              
-                const response =  await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id)
-                this.pokeInfo = response.data.data,
-                this.description = this.pokeInfo.Description[0].description,
-                this.type1 = this.pokeInfo.Types[0].type1,
-                this.type2 = this.pokeInfo.Types[0].type2,
-                this.height = this.pokeInfo.Information[0].height,
-                this.weight = this.pokeInfo.Information[0].weight
-            },
-
             return_type(type1) {
                 return `/assets/types/${type1}` + `.png`
             },

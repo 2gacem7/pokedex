@@ -124,8 +124,7 @@
 
 
 <script>
-    import axios from "axios"
-    import InfoLogoType from '@/components/InfoLogoType.vue'
+    import InfoLogoType from '@/components/InfoLogoType.vue';
     export default {
         name: 'StatsPokemon',
         components: {
@@ -155,7 +154,8 @@
                 rock: "",
                 steel: "",
                 water: "",
-                weaknesses: ""
+                weaknesses: "",
+                getWeaknesses:this.$store.state.getWeaknesses,
             }
         },
         beforeMount() {
@@ -167,39 +167,6 @@
             }
         },
         methods: {
-            async getWeaknesses() {
-                var myHeaders = new Headers();
-                myHeaders.append("Authorization", "Bearer ");
-
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    redirect: 'follow'
-                };
-                await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id, requestOptions)
-                    .then(response => {
-                        this.pokeInfo = response.data.data,
-                            this.weaknesses = this.pokeInfo.Weaknesses[0]
-                        this.bug = this.weaknesses.bug
-                        this.dark = this.weaknesses.dark
-                        this.dragon = this.weaknesses.dragon
-                        this.electric = this.weaknesses.belectricug
-                        this.fairy = this.weaknesses.fairy
-                        this.fight = this.weaknesses.fight
-                        this.fire = this.weaknesses.fire
-                        this.flying = this.weaknesses.flying
-                        this.ghost = this.weaknesses.ghost
-                        this.grass = this.weaknesses.grass
-                        this.ground = this.weaknesses.ground
-                        this.ice = this.weaknesses.ice
-                        this.normal = this.weaknesses.normal
-                        this.poison = this.weaknesses.bupoisong
-                        this.psychic = this.weaknesses.psychic
-                        this.rock = this.weaknesses.rock
-                        this.steel = this.weaknesses.steel
-                        this.water = this.weaknesses.water
-                    })
-            },
             return_type_written(type) {
                 return `/assets/types/${type}` + `.png`
             },
