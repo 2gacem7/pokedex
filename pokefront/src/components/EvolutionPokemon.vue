@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="idEvolution!=null && otherEvolution == false" class="mt-3 row justify-content-center text-center">
+        <div v-if="idEvolution!=null && otherEvolution === false" class="mt-3 row justify-content-center text-center">
             <div class="card border-0" style="max-width: 5rem;">
                 <img :src="return_ImagePokeBase(ImagePokemonBase)" alt="no pokemon's image">
                 {{name}}
@@ -11,7 +11,7 @@
                 {{nomEvolution}}
             </div>
         </div>
-        <div v-else-if="idEvolution!=null && otherEvolution == true ">
+        <div v-if="idEvolution!=null && otherEvolution === true ">
             <div v-for="evolution in evolutions" :key="evolution.id_pok_evol"
                 class="mt-3 row justify-content-center text-center">
                 <div style="max-width: 5rem;">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div v-else class="text-center mt-3">
+        <div v-if="idEvolution === null" class="text-center mt-3">
             Ce pokémon n'a pas d'évolution selon le pokedex de Kanto
         </div>
     </div>
@@ -55,7 +55,6 @@
                 infoEvolution: "",
                 ImageEvolution: "",
                 nomEvolution: "",
-                No: "",
                 evolutions: "",
                 otherEvolution: false,
                 getPokemonIdEvolution: this.$store.state.getPokemonIdEvolution,
@@ -64,7 +63,7 @@
             }
         },
         beforeMount() {
-            this.getPokemonIdEvolution();
+            this.getPokemonIdEvolution();            
         },
         watch: {
             id() {

@@ -53,18 +53,20 @@ export default new Vuex.Store({
     },
 
     async getPokemonIdEvolution() {
-      console.log(this.arrayP);
       const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id);
-      
       this.pokeInfo = response.data.data;
       this.ImagePokemonBase = this.pokeInfo.Images[0].Images;
+
       if (this.pokeInfo.Evolutions != "") {
         this.evolutions = this.pokeInfo.Evolutions;
         this.idEvolution = this.pokeInfo.Evolutions[0].id_pok_evol;
+
         if (this.pokeInfo.Evolutions.length > 1) {
           this.otherEvolution = true;
           this.pokeInfo.Evolutions.forEach(Evolution => {
           this.idEvolution = Evolution.id_pok_evol;
+          console.log(this.otherEvolution);
+
 
            axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.idEvolution)
              .then(test =>{ 
@@ -76,10 +78,15 @@ export default new Vuex.Store({
             })
           })
         }
-      } else {
-        this.idEvolution = null
+      }      
+      else {
+        this.idEvolution = null;
+        this.otherEvolution = false
+        console.log(this.otherEvolution);
+
       }
       if (this.idEvolution != null && this.pokeInfo.Evolutions.length < 2) {
+        this.otherEvolution=false
         const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.idEvolution);
         this.infoEvolution = response.data.data,
         this.nomEvolution = this.infoEvolution.Name[0].nom_pok,
