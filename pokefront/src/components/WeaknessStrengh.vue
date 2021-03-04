@@ -1,8 +1,8 @@
 <template>
     <div class="">
         <div class="card border-0">
-            <h5 class="mt-3 card-header border-0 bg-white" id="weaknesses">Weaknesses: </h5>
-            <div class="ml-1 card-body row">
+            <h5 class="text-center mt-3" id="weaknesses">Weaknesses: </h5>
+            <div class="mt-3 mb-3 row justify-content-center">
                 <div class="mr-2" v-if="bug==2">
                     <img :src="return_type_written('bug')" class="sizeItem" alt="no type's symbol">
                 </div>
@@ -59,9 +59,9 @@
                 </div>
             </div>
         </div>
-        <div class="card border-0">
-            <h5 class="card-header border-0 bg-white" id="strenghs">Efficience & Resistance:</h5>
-            <div class="ml-1 card-body row">
+        <div>
+            <h5 class="text-center mt-4" id="strenghs">Efficience & Resistance:</h5>
+            <div class="mt-4 mb-3 row justify-content-center">
                 <div class="mr-2" v-if="bug<1">
                     <img :src="return_type_written('bug')" class="sizeItem" alt="no type's symbol">
                 </div>
@@ -78,7 +78,7 @@
                     <img :src="return_type_written('fairy')" class="sizeItem" alt="no type's symbol">
                 </div>
                 <div class="mr-2" v-if="fight<1">
-                    <img :src="return_type_written('fight')" class="sizeItem" alt="no type's symbol">
+                    <img :src="return_type_written('fighting')" class="sizeItem" alt="no type's symbol">
                 </div>
                 <div class="mr-2" v-if="fire<1">
                     <img :src="return_type_written('fire')" class="sizeItem" alt="no type's symbol">
