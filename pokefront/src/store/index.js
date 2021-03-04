@@ -53,6 +53,7 @@ export default new Vuex.Store({
     },
 
     async getPokemonIdEvolution() {
+      console.log(this.arrayP);
       const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id);
       
       this.pokeInfo = response.data.data;
@@ -71,7 +72,7 @@ export default new Vuex.Store({
              this.idPok = test.data.data.No;
              this.arrayP.push({
                id: this.idPok, 
-               nameEvolution:this.multipleEvolutions})
+               nameEvolution:this.multipleEvolutions});
             })
           })
         }

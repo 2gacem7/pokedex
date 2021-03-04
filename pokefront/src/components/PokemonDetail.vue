@@ -4,22 +4,19 @@
         <h6 class="text-center">(No.{{id}})</h6>
 
         <div class="justify-content-center">
-            <div>
-                <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image">
-            </div>
-            <div>
-
-             <router-link v-bind:to="'/pokedex/' + id">
-                <a v-on:click="previousPokemon()" class="changePage ">
+            <router-link v-bind:to="'/pokedex/' + id">
+                <a v-on:click="previousPokemon()" class="changePage">
                     &#8249;
                 </a>
             </router-link>
+            <div class="text-center">
+                <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image">
+            </div>
             <router-link v-bind:to="'/pokedex/' + id">
-                <a v-on:click="nextPokemon()" class="changePage text-right">
+                <a v-on:click="nextPokemon()" class="changePage">
                     &#8250;
                 </a>
             </router-link>
-            </div>
         </div>
         <div class="mt-5">
             <TabBar :id="id" :name="name" />

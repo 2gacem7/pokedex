@@ -69,6 +69,7 @@
         watch: {
             id() {
                 this.getPokemonIdEvolution();
+                this.arrayP=[];
             }
         },
         methods: {
