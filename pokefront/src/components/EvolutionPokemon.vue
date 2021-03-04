@@ -1,29 +1,32 @@
 <template>
     <div>
         <div v-if="idEvolution!=null && otherEvolution == false" class="mt-3 row justify-content-center text-center">
-            <div class="card border-0">
-                <img :src="return_ImagePokeBase(ImagePokemonBase)" alt="no pokemon's image" style="max-width: 5rem;">
+            <div class="card border-0" style="max-width: 5rem;">
+                <img :src="return_ImagePokeBase(ImagePokemonBase)" alt="no pokemon's image">
                 {{name}}
             </div>
             <span class="ml-5 mr-5" style='font-size:3rem;'>&#8594;</span>
-            <div class="card border-0">
-                <img :src="return_ImageEvolution(ImageEvolution)" alt="no pokemon's image" style="max-width: 5rem;">
+            <div class="card border-0" style="max-width: 5rem;">
+                <img :src="return_ImageEvolution(ImageEvolution)" alt="no pokemon's image">
                 {{nomEvolution}}
             </div>
         </div>
-        <div v-else-if="idEvolution!=null && otherEvolution == true "
-            class="mt-3 row justify-content-center text-center">
-            <div v-for="evolution in evolutions" :key="evolution.id_pok_evol" class="row mt-3">
-                <div class="card border-0">
-                    <img :src="return_ImagePokeBase(ImagePokemonBase)" alt="no pokemon's image"
-                        style="max-width: 5rem;">
+        <div v-else-if="idEvolution!=null && otherEvolution == true ">
+            <div v-for="evolution in evolutions" :key="evolution.id_pok_evol"
+                class="mt-3 row justify-content-center text-center">
+                <div style="max-width: 5rem;">
+                    <img :src="return_ImagePokeBase(ImagePokemonBase)" class="img-fluid" alt="no pokemon's image">
                     {{name}}
                 </div>
                 <span class="ml-5 mr-5" style='font-size:3rem;'>&#8594;</span>
-                <div class="card border-0">
-                    {{evolution.id_pok_evol}}
-                    <img :src="returnImgageOtherEvolutions(evolution.id_pok_evol)" alt="no pokemon's image"
-                        style="max-width: 5rem;">
+                <div style="max-width: 5rem;">
+                    <img :src="returnImgageOtherEvolutions(evolution.id_pok_evol)" class="img-fluid"
+                        alt="no pokemon's image">
+                    <div v-for="evo in arrayP" :key="evo.id">
+                        <p v-if="evolution.id_pok_evol == evo.id">
+                            {{evo.nameEvolution}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,12 +58,13 @@
                 No: "",
                 evolutions: "",
                 otherEvolution: false,
-                getPokemonIdEvolution: this.$store.state.getPokemonIdEvolution
+                getPokemonIdEvolution: this.$store.state.getPokemonIdEvolution,
+                multipleEvolutions: "",
+                arrayP: []
             }
         },
         beforeMount() {
             this.getPokemonIdEvolution();
-
         },
         watch: {
             id() {
@@ -77,6 +81,11 @@
             returnImgageOtherEvolutions(id_pok_evol) {
                 return `/assets/pokemon_image/${id_pok_evol}.png`
             },
+
+            // test() {
+            //     for( )
+            // }
+
         },
     }
 </script>

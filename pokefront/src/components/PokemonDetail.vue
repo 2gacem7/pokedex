@@ -1,27 +1,28 @@
 <template>
-    <div class="container fontPokemon" style="max-width:60rem">
-        <router-link v-bind:to="'/pokedex/' + id">
-            <a v-on:click="nextPokemon()">
-                suivant
-            </a>
-        </router-link>
-        <router-link v-bind:to="'/pokedex/' + id">
-            <a v-on:click="previousPokemon()">
-                precedent
-            </a>
-        </router-link>
-        <div class="d-flex justify-content-center ">
-            <div class=" mb-5">
-                <div class="card-header mb-5">
-                    <h5 class="font-weight-bold d-flex justify-content-center">{{name}}</h5>
-                    <h6 class="d-flex justify-content-center">(No.{{id}})</h6>
-                </div>
-                <img :src="return_Image(image)" class="rounded mx-auto d-block container-fluid" alt="no pokemon's image"
-                    style="max-width: 30rem;">
-                <div class=mt-5>
-                    <TabBar :id="id" :name="name" style="min-width:20rem; max-width:30rem" />
-                </div>
+    <div class="fontPokemon">
+        <h5 class="font-weight-bolder text-center">{{name}}</h5>
+        <h6 class="text-center">(No.{{id}})</h6>
+
+        <div class="justify-content-center">
+            <div>
+                <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image">
             </div>
+            <div>
+
+             <router-link v-bind:to="'/pokedex/' + id">
+                <a v-on:click="previousPokemon()" class="changePage ">
+                    &#8249;
+                </a>
+            </router-link>
+            <router-link v-bind:to="'/pokedex/' + id">
+                <a v-on:click="nextPokemon()" class="changePage text-right">
+                    &#8250;
+                </a>
+            </router-link>
+            </div>
+        </div>
+        <div class="mt-5">
+            <TabBar :id="id" :name="name" />
         </div>
     </div>
 </template>
@@ -47,16 +48,16 @@
                 getPokemonInformation: this.$store.state.getPokemonInformation
             }
         },
-        mounted () {
+        mounted() {
             this.getPokemonInformation();
         },
-        watch:{
+        watch: {
             id() {
                 this.getPokemonInformation();
             }
         },
         methods: {
-           
+
             nextPokemon() {
                 this.id++;
             },
@@ -87,5 +88,14 @@
         background: rgb(255, 0, 0);
         background: linear-gradient(214deg, rgba(255, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
         color: white;
+    }
+
+    .changePage {
+        background-color: #f1f1f1;
+        color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 50%;
     }
 </style>

@@ -19,7 +19,7 @@
                     <img :src="return_type_written('fairy')" class="sizeItem" alt="no type's symbol">
                 </div>
                 <div class="mr-2" v-if="fight==2">
-                    <img :src="return_type_written('fight')" class="sizeItem" alt="no type's symbol">
+                    <img :src="return_type_written('fighting')" class="sizeItem" alt="no type's symbol">
                 </div>
                 <div class="mr-2" v-if="fire==2">
                     <img :src="return_type_written('fire')" class="sizeItem" alt="no type's symbol">
@@ -118,7 +118,7 @@
                 </div>
             </div>
         </div>
-        <InfoLogoType style="min-width:20rem; max-width:30rem" />
+        <InfoLogoType />
     </div>
 </template>
 

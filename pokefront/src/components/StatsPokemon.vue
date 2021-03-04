@@ -104,8 +104,6 @@
 </template>
 
 <script>
-    //import axios from "axios"
-
     export default {
         name: 'StatsPokemon',
         components: {
@@ -126,16 +124,16 @@
                 getPokemonStats: this.$store.state.getPokemonStats
             }
         },
-        beforeMount () {
+        beforeMount() {
             this.getPokemonStats();
         },
-        watch:{
-            id(){
+        watch: {
+            id() {
                 this.getPokemonStats();
             },
         },
         methods: {
-            
+
         },
     }
 </script>

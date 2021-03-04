@@ -28,8 +28,8 @@
                         <img :src="return_type_written('fairy')" class="sizeTypeItem" alt="no type's written">
                     </div>
                     <div class="mr-2 border-0 ml-5">
-                        <img :src="return_type('fight')" class="sizeTypeItem" alt="no type's symbol">
-                        <img :src="return_type_written('fight')" class="sizeTypeItem" alt="no type's written">
+                        <img :src="return_type('fighting')" class="sizeTypeItem" alt="no type's symbol">
+                        <img :src="return_type_written('fighting')" class="sizeTypeItem" alt="no type's written">
                     </div>
                     <div class="mr-2 border-0 ml-5">
                         <img :src="return_type('fire')" class="sizeTypeItem" alt="no type's symbol">
