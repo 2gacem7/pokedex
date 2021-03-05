@@ -1,22 +1,29 @@
 <template>
-    <div class="fontPokemon">
-        <h5 class="font-weight-bolder text-center">{{name}}</h5>
-        <h6 class="text-center">(No.{{id}})</h6>
+    <div class="fontPokemon ">
+        <h5 class="font-weight-bolder text-center mt-3">{{name}}</h5>
+        <h6 class="text-center mb-5">(No.{{id}})</h6>
 
-        <div class="justify-content-center">
-            <router-link v-bind:to="'/pokedex/' + id">
-                <a v-on:click="previousPokemon()" class="changePage">
-                    &#8249;
-                </a>
-            </router-link>
-            <div class="text-center">
+        <div class="container">
+            <div class="text-center ">
                 <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image">
+                </div>
+            <div class="text-center row">
+                <div class="col">
+                <router-link v-bind:to="'/pokedex/' + id">
+                        <a v-on:click="previousPokemon()" class="changePage">
+                            &#8249;
+                        </a>
+                    </router-link>
+                </div>
+                <div class="col">
+                    <router-link v-bind:to="'/pokedex/' + id">
+                        <a v-on:click="nextPokemon()" class="changePage">
+                            &#8250;
+                        </a>
+                    </router-link>
+                </div>
             </div>
-            <router-link v-bind:to="'/pokedex/' + id">
-                <a v-on:click="nextPokemon()" class="changePage">
-                    &#8250;
-                </a>
-            </router-link>
+
         </div>
         <div class="mt-5">
             <TabBar :id="id" :name="name" />
@@ -88,11 +95,24 @@
     }
 
     .changePage {
-        background-color: #f1f1f1;
-        color: black;
         text-decoration: none;
         display: inline-block;
-        padding: 8px 16px;
+        padding: 4px 11px;
         border-radius: 50%;
+
+        background: rgb(250, 0, 0);
+        background: linear-gradient(180deg, rgba(250, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 1) 100%);
+        color: white;
+        border: solid;
+        border-color: black;
+    }
+
+    .yo{
+        
+       
+        background: linear-gradient(rgba(0, 128, 200, 0.5), rgba(255, 255, 0, 0.5)),
+                  url("../../public/assets/pokeball-icon-png-27.jpg");
+        
+
     }
 </style>
