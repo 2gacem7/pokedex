@@ -5,7 +5,7 @@
 
         <div class="container">
             <div class="text-center">
-                <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image">
+                <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image"  type="button" data-toggle="modal" data-target="#pokeImage">
             </div>
             <div class="text-center row">
                 <div class="col">
@@ -24,6 +24,18 @@
                 </div>
             </div>
         </div>
+
+
+<!-- Modal -->
+<div class="modal" id="pokeImage" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog mt-5 justify-content-center" role="document">
+      <div class="modal-content text-center" style="max-width:200%">
+       <img :src="return_Image(image)" >
+      </div>
+  </div>
+</div>
+
+
         <div class="mt-5">
             <TabBar :id="id" :name="name" />
         </div>

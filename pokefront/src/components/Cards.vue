@@ -1,9 +1,18 @@
 <template>
     <div class="row justify-content-center mt-3">
         <div class="mt-2 mr-3" v-for="card in cards" :key="card.id" style="max-width:30%">
-            <a :href="card.images.large" target="_blank">
-                <img :src="card.images.large" alt="no card" class="img-fluid">
-            </a>
+            <img :src="card.images.large" alt="no card" class="img-fluid" type="button" data-toggle="modal" data-target="#pokecard" v-on:click="return_card(card.images.large)">
+        <div class="modal" id="pokecard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+  <div class="modal-dialog mt-5 justify-content-center" role="document">
+      <div class="modal-content text-center" style="max-width:200%">
+       <img :src="cardLink" >
+      </div>
+  </div>
+
+
+
+</div>
         </div>
     </div>
 </template>
@@ -24,7 +33,8 @@
         data() {
             return {
                 cards: {},
-                nameCard: ""
+                nameCard: "",
+                cardLink:""
             }
         },
         async beforeMount() {
@@ -48,6 +58,13 @@
             async card() {
                 const response = await axios.get(`https://api.pokemontcg.io/v2/cards?q=supertype:pokemon name:` + this.name);
                 this.cards = response.data.data;
+                console.log(this.cards)
+            },
+
+            return_card(card) {
+                    //QD CLICK RECUPE VALUE DLA VARIABLE
+                    this.cardLink = card;
+                    console.log(this.cardLink)
             }
         },
     }
