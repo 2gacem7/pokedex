@@ -104,6 +104,13 @@ export default new Vuex.Store({
       this.height = this.pokeInfo.Information[0].height,
       this.weight = this.pokeInfo.Information[0].weight
     },
+
+    async card() {
+      const response = await axios.get(`https://api.pokemontcg.io/v2/cards?q=supertype:pokemon name:` + this.name);
+      this.cards = response.data.data;
+  }
+
+
   },
 
   getters: {

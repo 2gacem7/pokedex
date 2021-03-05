@@ -1,15 +1,15 @@
 <template>
-    <div class="fontPokemon ">
+    <div class="fontPokemon">
         <h5 class="font-weight-bolder text-center mt-3">{{name}}</h5>
         <h6 class="text-center mb-5">(No.{{id}})</h6>
 
         <div class="container">
-            <div class="text-center ">
+            <div class="text-center">
                 <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image">
-                </div>
+            </div>
             <div class="text-center row">
                 <div class="col">
-                <router-link v-bind:to="'/pokedex/' + id">
+                    <router-link v-bind:to="'/pokedex/' + id">
                         <a v-on:click="previousPokemon()" class="changePage">
                             &#8249;
                         </a>
@@ -23,7 +23,6 @@
                     </router-link>
                 </div>
             </div>
-
         </div>
         <div class="mt-5">
             <TabBar :id="id" :name="name" />
@@ -32,8 +31,7 @@
 </template>
 
 <script>
-    //import axios from "axios"
-    import TabBar from '@/components/TabBar.vue'
+    import TabBar from '@/components/TabBar.vue';
 
     export default {
         components: {
@@ -49,7 +47,8 @@
                 type2: "",
                 image: "",
                 name: "",
-                getPokemonInformation: this.$store.state.getPokemonInformation
+                getPokemonInformation: this.$store.state.getPokemonInformation,
+                cards: {}
             }
         },
         mounted() {
@@ -107,12 +106,19 @@
         border-color: black;
     }
 
-    .yo{
-        
-       
+    .yo {
         background: linear-gradient(rgba(0, 128, 200, 0.5), rgba(255, 255, 0, 0.5)),
-                  url("../../public/assets/pokeball-icon-png-27.jpg");
-        
-
+            url("../../public/assets/pokeball-icon-png-27.jpg");
     }
+
+    .test{
+        width:100%;
+       background-color: black;
+       position:relative
+    }
+
+.modal-body {
+    overflow: auto;
+    position: relative;
+}
 </style>
