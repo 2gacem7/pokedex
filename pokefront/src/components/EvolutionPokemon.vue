@@ -1,12 +1,12 @@
 <template>
     <div>
         <div v-if="idEvolution!=null && otherEvolution === false" class="mt-3 row justify-content-center text-center">
-            <div class="card border-0" style="max-width: 6rem;">
+            <div class="card border-0 bg-transparent" style="max-width: 6rem;">
                 <img :src="return_ImagePokeBase(ImagePokemonBase)" alt="no pokemon's image">
                 {{name}}
             </div>
             <span class="ml-3 mr-3" style='font-size:3rem;'>&#8594;</span>
-            <div class="card border-0" style="max-width: 6rem;">
+            <div class="card border-0 bg-transparent" style="max-width: 6rem;">
                 <img :src="return_ImageEvolution(ImageEvolution)" alt="no pokemon's image">
                 {{nomEvolution}}
             </div>
