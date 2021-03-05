@@ -50,7 +50,6 @@ export default new Vuex.Store({
       this.rock = this.weaknesses.rock,
       this.steel = this.weaknesses.steel,
       this.water = this.weaknesses.water
-      console.log(this.pokeInfo)
     },
 
     async getPokemonIdEvolution() {
