@@ -69,9 +69,9 @@ export default new Vuex.Store({
 
 
            axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.idEvolution)
-             .then(test =>{ 
-             this.multipleEvolutions = test.data.data.Name[0].nom_pok;
-             this.idPok = test.data.data.No;
+             .then(response =>{ 
+             this.multipleEvolutions = response.data.data.Name[0].nom_pok;
+             this.idPok = response.data.data.No;
              this.arrayP.push({
                id: this.idPok, 
                nameEvolution:this.multipleEvolutions});
@@ -104,13 +104,6 @@ export default new Vuex.Store({
       this.height = this.pokeInfo.Information[0].height,
       this.weight = this.pokeInfo.Information[0].weight
     },
-
-    async card() {
-      const response = await axios.get(`https://api.pokemontcg.io/v2/cards?q=supertype:pokemon name:` + this.name);
-      this.cards = response.data.data;
-  }
-
-
   },
 
   getters: {
