@@ -2,23 +2,23 @@
     <div class="container-fluid" style="max-width:35rem">
         <ul class="nav nav-tabs justify-content-center font-weight-bold" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#description" role="tab"
+                <a class="nav-link active textColor" id="home-tab" data-toggle="tab" href="#description" role="tab"
                     aria-controls="home">About</a> 
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#stats" role="tab"
+                <a class="nav-link textColor" id="profile-tab" data-toggle="tab" href="#stats" role="tab"
                     aria-controls="profile">Stats</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                <a class="nav-link textColor" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                     aria-controls="contact">Weaknesses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#evolution" role="tab"
+                <a class="nav-link textColor" id="contact-tab" data-toggle="tab" href="#evolution" role="tab"
                     aria-controls="contact">Evolutions </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#cards" role="tab"
+                <a class="nav-link textColor" id="contact-tab" data-toggle="tab" href="#cards" role="tab"
                     aria-controls="contact">Cards </a>
             </li>
         </ul>
@@ -33,10 +33,10 @@
                 <WeaknessStrengh :id="id" />
             </div>
             <div class="tab-pane fade" id="evolution" role="tabpanel" aria-labelledby="contact-tab">
-                <EvolutionPokemon :id="id" :name="name" />
+                <EvolutionPokemon :id="id" :name="name" style="height:300px" />
             </div>
             <div class="tab-pane fade" id="cards" role="tabpanel" aria-labelledby="contact-tab">
-                <Cards :id="id" :name="name" />
+                <Cards :id="id" :name="name" class="overflow-auto ml-3" style="max-height:400px" />
             </div>
         </div>
     </div>
@@ -72,3 +72,9 @@
         },
     }
 </script>
+
+<style scoped>
+.textColor{
+    color:black
+}
+</style>
