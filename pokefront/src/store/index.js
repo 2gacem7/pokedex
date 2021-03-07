@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     async getPokemonInformation() {
+      try{
       const response = await axios.get("http://127.0.0.1:8000/api/v1/pokedex/" + this.id)
       this.pokeInfo = response.data.data,
       this.description = this.pokeInfo.Description[0].description,
@@ -14,6 +15,12 @@ export default new Vuex.Store({
       this.type2 = this.pokeInfo.Types[0].type2,
       this.image = this.pokeInfo.Images[0].Images,
       this.name = this.pokeInfo.Name[0].nom_pok
+    }
+    catch(e){
+      console.log('pokemon inconnu');
+      alert('pokemon inconnu');
+      this.checkPokemonExist = false;
+    }
     },
 
     async getPokemonStats() {

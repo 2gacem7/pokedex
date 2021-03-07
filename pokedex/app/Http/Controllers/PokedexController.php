@@ -48,14 +48,8 @@ class PokedexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show( Pokedex $pokedex)
-    {
-       
-         
-                        
+    {        
         return new ResourcesPokedex($pokedex);
-        
-
-       
     }
 
     /**

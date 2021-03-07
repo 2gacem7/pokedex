@@ -1,6 +1,5 @@
 <template>
-
-    <div class="fontPokemon" v-bind:class="{Grass: type1=='grass', Fire :type1=='fire', 
+    <div v-if="checkPokemonExist === true" class="fontPokemon" v-bind:class="{Grass: type1=='grass', Fire :type1=='fire', 
                             Water :type1=='water', Poison :type1=='poison', Flying :type1=='flying',
                             Bug :type1=='bug', Normal :type1=='normal', Dark :type1=='dark',
                             Ice :type1=='ice',Ground :type1=='ground', Electric :type1=='electric',
@@ -20,7 +19,7 @@
             <div class="text-center row">
                 <div class="col">
                     <router-link v-bind:to="'/pokedex/' + id">
-                        <a v-on:click="previousPokemon()" class="changePage">
+                        <a v-show="id > 1" v-on:click="previousPokemon()" class="changePage">
                             &#8249;
                         </a>
                     </router-link>
@@ -46,6 +45,9 @@
             <TabBar :id="id" :name="name" />
         </div>
     </div>
+    <div v-else>
+        Missing no
+    </div>
 </template>
 
 <script>
@@ -68,11 +70,13 @@
                 image: "",
                 name: "",
                 getPokemonInformation: this.$store.state.getPokemonInformation,
-                cards: {}
+                cards: {},
+                checkPokemonExist: true
             }
         },
         mounted() {
             this.getPokemonInformation();
+            console.log(this.checkPokemonExist)
         },
         watch: {
             id() {
