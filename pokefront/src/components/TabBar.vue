@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid" style="max-width:35rem">
+    <div class="container-fluid Test " style="max-width:35rem">
         <ul class="nav nav-tabs justify-content-center font-weight-bold" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active textColor" id="home-tab" data-toggle="tab" href="#description" role="tab"
@@ -75,6 +75,10 @@
 
 <style scoped>
 .textColor{
-    color:black
+    color:white
+}
+.Test{
+    background-color: black;
+    color:white
 }
 </style>

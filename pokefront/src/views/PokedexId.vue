@@ -52,7 +52,7 @@
 
 <script>
     import TabBar from '@/components/TabBar.vue';
-    import Navbar from '@/components/Navbar.vue'
+    import Navbar from '@/components/Navbar.vue';
 
     export default {
         components: {
@@ -132,6 +132,7 @@
     .Grass {
         background: rgb(0, 0, 0);
         background: linear-gradient(49deg, rgba(0, 0, 0, 1) 0%, rgba(32, 150, 32, 1) 40%, rgba(22, 255, 0, 1) 90%);
+        color: white;
     }
 
     .Fire {
@@ -153,6 +154,7 @@
     .Poison {
         background-color: #5300de;
         background-image: linear-gradient(27deg, #5300de 0%, #FC00FF 100%);
+        color: white;
     }
 
     .Psychic {
@@ -164,6 +166,7 @@
     .Bug {
         background: rgb(0, 210, 0);
         background: linear-gradient(227deg, rgba(0, 210, 0, 1) 5%, rgba(62, 255, 62, 1) 39%, rgba(159, 238, 159, 1) 62%);
+        color:black;
     }
 
     .Ice {
@@ -197,7 +200,7 @@
     .Electric {
         background: rgb(0, 0, 0);
         background: linear-gradient(38deg, rgba(0, 0, 0, 1) 5%, rgba(255, 223, 0, 1) 41%, rgba(247, 255, 62, 1) 73%);
-        color: black;
+        color: white;
     }
 
     .Rock {
@@ -208,11 +211,13 @@
     .Ground {
         background: rgb(110, 107, 99);
         background: linear-gradient(23deg, rgba(110, 107, 99, 1) 40%, rgba(125, 67, 22, 1) 89%);
+        color: white;
     }
 
     .Fighting {
         background: rgb(131, 41, 11);
         background: linear-gradient(23deg, rgba(131, 41, 11, 1) 22%, rgba(218, 69, 10, 1) 47%, rgba(255, 30, 0, 1) 82%);
+        color:black;
     }
 
     .Dark {
@@ -223,5 +228,6 @@
     .Normal {
         background: rgb(52, 52, 52);
         background: linear-gradient(0deg, rgba(52, 52, 52, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(177, 177, 177, 1) 100%);
+        color:black;
     }
 </style>

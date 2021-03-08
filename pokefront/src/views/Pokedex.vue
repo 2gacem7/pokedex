@@ -1,65 +1,69 @@
 <template>
-  <div class="container-fluid fontPokemon" style="max-width:80rem">
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Pokedex's color
-      </button>
-      <div class="dropdown-menu ">
-        <a v-on:mouseover="white" type="button" class="bgcardwhite color-box border ml-2"></a>
-        <a v-on:mouseover="black" type="button" class="bgcardblack color-box border ml-2"></a>
-        <a v-on:mouseover="blue" type="button" class="bgcardblue color-box ml-2"></a>
-        <a v-on:mouseover="grey" type="button" class="bgcardgrey color-box border ml-2"></a>
-        <a v-on:mouseover="purple" type="button" class="bgcardpurple color-box ml-2"></a>
-        <a v-on:mouseover="redpurple" type="button" class="bgcardredpurple color-box ml-2"></a>
-        <a v-on:mouseover="red" type="button" class="bgcardred color-box ml-2"></a>
-        <a v-on:mouseover="lightBlue" type="button" class="bgcardLightBlue color-box ml-2"></a>
-        <a v-on:mouseover="pokeballcolor" type="button" class="bgcardpokeball color-box ml-2"></a>
+  <div>
+    <Navbar />
+
+    <div class="container-fluid fontPokemon mt-5" style="max-width:80rem">
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Pokedex's color
+        </button>
+        <div class="dropdown-menu ">
+          <a v-on:mouseover="white" type="button" class="bgcardwhite color-box border ml-2"></a>
+          <a v-on:mouseover="black" type="button" class="bgcardblack color-box border ml-2"></a>
+          <a v-on:mouseover="blue" type="button" class="bgcardblue color-box ml-2"></a>
+          <a v-on:mouseover="grey" type="button" class="bgcardgrey color-box border ml-2"></a>
+          <a v-on:mouseover="purple" type="button" class="bgcardpurple color-box ml-2"></a>
+          <a v-on:mouseover="redpurple" type="button" class="bgcardredpurple color-box ml-2"></a>
+          <a v-on:mouseover="red" type="button" class="bgcardred color-box ml-2"></a>
+          <a v-on:mouseover="lightBlue" type="button" class="bgcardLightBlue color-box ml-2"></a>
+          <a v-on:mouseover="pokeballcolor" type="button" class="bgcardpokeball color-box ml-2"></a>
+        </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div v-for="pokemon in pokemons.data" :key="pokemon.id_pok" class="card ml-2 mt-2">
-        <router-link v-bind:to="'/pokedex/' + pokemon.id">
-          <img :src="return_Link(pokemon)" class="card-img-top" v-bind:class="{Grass: pokemon.type1=='grass', Fire :pokemon.type1=='fire', 
+      <div class="row justify-content-center">
+        <div v-for="pokemon in pokemons.data" :key="pokemon.id_pok" class="card ml-2 mt-2">
+          <router-link v-bind:to="'/pokedex/' + pokemon.id">
+            <img :src="return_Link(pokemon)" class="card-img-top" v-bind:class="{Grass: pokemon.type1=='grass', Fire :pokemon.type1=='fire', 
                             Water :pokemon.type1=='water', Poison :pokemon.type1=='poison', Flying :pokemon.type1=='flying',
                             Bug :pokemon.type1=='bug', Normal :pokemon.type1=='normal', Dark :pokemon.type1=='dark',
                             Ice :pokemon.type1=='ice',Ground :pokemon.type1=='ground', Electric :pokemon.type1=='electric',
                             Fairy :pokemon.type1=='fairy',Psychic :pokemon.type1=='psychic', Fighting :pokemon.type1=='fighting',
                             Rock :pokemon.type1=='rock', Steel :pokemon.type1=='steel',Ghost :pokemon.type1=='ghost',
                             Dragon :pokemon.type1=='dragon',}" alt="no pokemon's image" style="width: 15rem;">
-        </router-link>
-        <div class="card-body " v-bind:class="{bgcardblack: color_cardBody=='black', bgcardgrey: color_cardBody=='grey', bgcardblue: color_cardBody=='blue',
+          </router-link>
+          <div class="card-body " v-bind:class="{bgcardblack: color_cardBody=='black', bgcardgrey: color_cardBody=='grey', bgcardblue: color_cardBody=='blue',
                 bgcardwhite: color_cardBody=='white', bgcardpurple: color_cardBody=='purple', bgcardredpurple: color_cardBody=='redpurple', bgcardred:color_cardBody=='red',
                 bgcardLightBlue:color_cardBody=='lightBlue', bgcardpokeball:color_cardBody=='colorpokeball' }">
-          <h5 class="font-weight-bold"> {{pokemon.nom_pok}}</h5>
-          <h6>(No.{{pokemon.id}})</h6>
-          <div v-if="pokemon.type2!=''" class="row justify-content-center">
-            <p>
-              <img :src="return_type_written(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
-                style="width:3rem;">
-            </p>
-            <p class="ml-1">
-              <img :src="return_type(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
-                style="width:2rem;">/
-            </p>
-            <p class="ml-1">
-              <img :src="return_type2_written(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
-                style="width:3rem;">
-            </p>
-            <p class="ml-1">
-              <img :src="return_type2(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
-                style="width:2rem;">
-            </p>
-          </div>
-          <div v-else class="row justify-content-center">
-            <p>
-              <img :src="return_type_written(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
-                style="width:3rem;">
-            </p>
-            <p class="ml-1">
-              <img :src="return_type(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
-                style="width:2rem;">
-            </p>
+            <h5 class="font-weight-bold"> {{pokemon.nom_pok}}</h5>
+            <h6>(No.{{pokemon.id}})</h6>
+            <div v-if="pokemon.type2!=''" class="row justify-content-center">
+              <p>
+                <img :src="return_type_written(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
+                  style="width:3rem;">
+              </p>
+              <p class="ml-1">
+                <img :src="return_type(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
+                  style="width:2rem;">/
+              </p>
+              <p class="ml-1">
+                <img :src="return_type2_written(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
+                  style="width:3rem;">
+              </p>
+              <p class="ml-1">
+                <img :src="return_type2(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
+                  style="width:2rem;">
+              </p>
+            </div>
+            <div v-else class="row justify-content-center">
+              <p>
+                <img :src="return_type_written(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
+                  style="width:3rem;">
+              </p>
+              <p class="ml-1">
+                <img :src="return_type(pokemon)" class="card-img-top" alt=" no symbol of pokemon's type"
+                  style="width:2rem;">
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -69,10 +73,16 @@
 
 
 <script>
-  import axios from "axios"
+  import axios from "axios";
+  import Navbar from '@/components/Navbar.vue';
 
   export default {
     name: 'ListPokemon',
+
+    components: {
+      Navbar
+    },
+
     data() {
       return {
         color_cardBody: "white",
