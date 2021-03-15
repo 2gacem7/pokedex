@@ -1,17 +1,17 @@
 <template>
-    <div v-if="checkPokemonExist === true" class="fontPokemon" v-bind:class="{Grass: type1=='grass', Fire :type1=='fire', 
+    <div v-if="checkPokemonExist === true" class="fontPokemon" >
+        <Navbar />
+        
+        <h5 class="font-weight-bolder text-center mt-3">{{name}}</h5>
+        <h6 class="text-center mb-5">(No.{{id}})</h6>
+
+        <div class="container border" v-bind:class="{Grass: type1=='grass', Fire :type1=='fire', 
                             Water :type1=='water', Poison :type1=='poison', Flying :type1=='flying',
                             Bug :type1=='bug', Normal :type1=='normal', Dark :type1=='dark',
                             Ice :type1=='ice',Ground :type1=='ground', Electric :type1=='electric',
                             Fairy :type1=='fairy',Psychic :type1=='psychic', Fighting :type1=='fighting',
                             Rock :type1=='rock', Steel :type1=='steel',Ghost :type1=='ghost',
                             Dragon :type1=='dragon',}">
-        <Navbar />
-        
-        <h5 class="font-weight-bolder text-center mt-3">{{name}}</h5>
-        <h6 class="text-center mb-5">(No.{{id}})</h6>
-
-        <div class="container">
             <div class="text-center">
                 <img :src="return_Image(image)" class="img-fluid" alt="no pokemon's image" type="button"
                     data-toggle="modal" data-target="#pokeImage">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col">
                     <router-link v-bind:to="'/pokedex/' + id">
-                        <a v-on:click="nextPokemon()" class="changePage">
+                        <a v-on:click="id++" class="changePage">
                             &#8250;
                         </a>
                     </router-link>
@@ -75,19 +75,21 @@
             }
         },
         mounted() {
-            this.getPokemonInformation();
-            console.log(this.checkPokemonExist)
+          this.getPokemonInformation();
+          console.log(this.checkPokemonExist)
         },
         watch: {
             id() {
                 this.getPokemonInformation();
             }
         },
+        computed:{
+
+        },
+
         methods: {
 
-            nextPokemon() {
-                this.id++;
-            },
+     
             previousPokemon() {
                 this.id--;
             },

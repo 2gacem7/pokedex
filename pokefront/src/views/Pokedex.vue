@@ -23,13 +23,8 @@
       <div class="row justify-content-center">
         <div v-for="pokemon in pokemons.data" :key="pokemon.id_pok" class="card ml-2 mt-2">
           <router-link v-bind:to="'/pokedex/' + pokemon.id">
-            <img :src="return_Link(pokemon)" class="card-img-top" v-bind:class="{Grass: pokemon.type1=='grass', Fire :pokemon.type1=='fire', 
-                            Water :pokemon.type1=='water', Poison :pokemon.type1=='poison', Flying :pokemon.type1=='flying',
-                            Bug :pokemon.type1=='bug', Normal :pokemon.type1=='normal', Dark :pokemon.type1=='dark',
-                            Ice :pokemon.type1=='ice',Ground :pokemon.type1=='ground', Electric :pokemon.type1=='electric',
-                            Fairy :pokemon.type1=='fairy',Psychic :pokemon.type1=='psychic', Fighting :pokemon.type1=='fighting',
-                            Rock :pokemon.type1=='rock', Steel :pokemon.type1=='steel',Ghost :pokemon.type1=='ghost',
-                            Dragon :pokemon.type1=='dragon',}" alt="no pokemon's image" style="width: 15rem;">
+            <img :src="return_Link(pokemon)" class="card-img-top" v-bind:class="classPokemon(pokemon)" alt="no pokemon's image"
+              style="width: 15rem;">
           </router-link>
           <div class="card-body " v-bind:class="{bgcardblack: color_cardBody=='black', bgcardgrey: color_cardBody=='grey', bgcardblue: color_cardBody=='blue',
                 bgcardwhite: color_cardBody=='white', bgcardpurple: color_cardBody=='purple', bgcardredpurple: color_cardBody=='redpurple', bgcardred:color_cardBody=='red',
@@ -93,6 +88,9 @@
     beforeMount() {
       this.listPokemon()
     },
+    computed: {
+      
+    },
 
     methods: {
       async listPokemon() {
@@ -141,6 +139,29 @@
       },
       pokeballcolor() {
         return this.color_cardBody = "colorpokeball"
+      },
+
+      classPokemon(pokemon) {
+        return {
+            Grass: pokemon.type1 == 'grass',
+            Fire: pokemon.type1 == 'fire',
+            Water: pokemon.type1 == 'water',
+            Poison:pokemon.type1 == 'poison',
+            Flying:pokemon.type1 == 'flying',
+            Bug: pokemon.type1 == 'bug',
+            Normal: pokemon.type1 == 'normal',
+            Dark: pokemon.type1 == 'dark',
+            Ice: pokemon.type1 == 'ice',
+            Ground: pokemon.type1 == 'ground',
+            Electric: pokemon.type1 == 'electric',
+            Fairy: pokemon.type1 == 'fairy',
+            Psychic: pokemon.type1 == 'psychic',
+            Fighting: pokemon.type1 == 'fighting',
+            Rock: pokemon.type1 == 'rock',
+            Steel: pokemon.type1 == 'steel',
+            Ghost: pokemon.type1 == 'ghost',
+            Dragon: pokemon.type1 == 'dragon'
+        }
       }
     },
 
